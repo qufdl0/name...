@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>내가 생각하는 글이란 표현이란 글쓰기란</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            transition: background-color 0.5s ease;
+        }
+
+        /* 버튼 숨기기 */
+        #next-button {
+            display: none;
+            width: 10px; /* 버튼 너비 */
+            height: 10px; /* 버튼 높이 */
+            background-color: #cccccc; /* 연한 회색 */
+            border: none;
+            border-radius: 50%; /* 동그란 모양 */
+            cursor: pointer;
+            transition: transform 0.2s ease, background-color 0.3s ease;
+        }
+
+        #next-button:hover {
+            transform: scale(1.2);
+            background-color: #bbbbbb; /* hover 시 약간 진한 회색 */
+        }
+
+        /* 다크 모드 감지 */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: rgb(255, 255, 255);
+            }
+        }
+    </style>
+</head>
+<body>
+    <button id="next-button" onclick="goToNextPage()"></button>
+
+    <script>
+        // 버튼 표시 함수
+        function showButton() {
+            const button = document.getElementById('next-button');
+            button.style.display = 'block';
+        }
+
+        // 다음 페이지로 이동
+        function goToNextPage() {
+            window.location.href = "https://jsbin.com/budoxuw"; // 이동할 페이지 경로
+        }
+
+        // 초기 감지 실행
+        function detectDarkMode() {
+            const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (isDarkMode) {
+                showButton();
+            }
+        }
+
+        // 화면 변화 시 다시 감지
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            if (e.matches) {
+                showButton();
+            }
+        });
+
+        // 초기 감지
+        detectDarkMode();
+    </script>
+</body>
+</html>
